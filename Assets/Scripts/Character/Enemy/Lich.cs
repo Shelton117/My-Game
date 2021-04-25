@@ -1,8 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+/// <summary>
+/// Î×Ê¦½Å±¾
+/// </summary>
 public class Lich : EnemyController
 {
     /// <summary>

@@ -1,12 +1,10 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
 {
     /// <summary>
-    /// 
+    /// 攻击时更新血条
     /// </summary>
     public event Action<int, int> UpdateHealthBarOnAttack;
     /// <summary>
@@ -163,7 +161,7 @@ public class CharacterStats : MonoBehaviour
         //UI处理
         UpdateHealthBarOnAttack?.Invoke(CurrentHealth, MaxHealth);
         //经验
-        if (CurrentHealth <= 0)
+        if (defener.CurrentHealth <= 0)
         {
             GameManager.Instance.PlayerStats.characterData.UpdateExp(characterData.KillPont);
         }

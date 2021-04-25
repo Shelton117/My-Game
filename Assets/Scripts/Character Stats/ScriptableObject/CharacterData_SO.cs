@@ -7,32 +7,20 @@ using UnityEngine;
 public class CharacterData_SO : ScriptableObject
 {
     [Header("Stats Info")]
-    /// <summary>
-    /// 最大生命值
-    /// </summary>
-    public int maxHealth;
-    /// <summary>
-    /// 当前血量
-    /// </summary>
-    public int currentHealth;
-    /// <summary>
-    /// 基础防御
-    /// </summary>
-    public int baseDefence;
-    /// <summary>
-    /// 当前防御
-    /// </summary>
-    public int currentDefence;
+    [Tooltip("最大生命值")] public int maxHealth;
+    [Tooltip("当前血量")] public int currentHealth;
+    [Tooltip("基础防御")] public int baseDefence;
+    [Tooltip("当前防御")] public int currentDefence;
 
     [Header("Killing Data")]
-    public int KillPont;
+    [Tooltip("击杀获得经验")] public int KillPont;
 
     [Header("Level")]
-    public int currentLevel;
-    public int MaxLevel;
-    public int baseExp;
-    public int currentExp;
-    public float LevelBuff;
+    [Tooltip("当前等级")] public int currentLevel;
+    [Tooltip("最大等级")] public int MaxLevel;
+    [Tooltip("基础经验")] public int baseExp;
+    [Tooltip("当前经验值")] public int currentExp;
+    [Tooltip("升级提升")] public float LevelBuff;
     
     private float LevelMultiplier
     {
@@ -61,7 +49,7 @@ public class CharacterData_SO : ScriptableObject
         //等级处理
         currentLevel = Mathf.Clamp(currentExp + 1, 0, MaxLevel);
         //经验
-        baseExp += (int)(baseExp * LevelBuff);
+        baseExp = (int)(baseExp * LevelMultiplier);
         //生命值处理
         maxHealth += (int)(maxHealth * LevelBuff);
         currentHealth = maxHealth;

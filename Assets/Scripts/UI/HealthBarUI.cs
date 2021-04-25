@@ -8,11 +8,11 @@ public class HealthBarUI : MonoBehaviour
     /// <summary>
     /// 血条的预制体
     /// </summary>
-    [SerializeField] private GameObject HealthUIBar;
+    [SerializeField] [Tooltip("血条的预制体")] private GameObject HealthUIBar;
     /// <summary>
     /// 血条的位置
     /// </summary>
-    [SerializeField] private Transform barPoint;
+    [SerializeField] [Tooltip("血条的位置")] private Transform barPoint;
     /// <summary>
     /// 血条的图片
     /// 可滑动的部分
@@ -32,10 +32,10 @@ public class HealthBarUI : MonoBehaviour
     /// </summary>
     private CharacterStats currentStats;
     /// <summary>
-    /// 
+    /// 是否显示血条
     /// </summary>
     [SerializeField]
-    private bool isShowUpBar;
+    [Tooltip("是否显示血条")] private bool isShowUpBar;
     /// <summary>
     /// 计算时间
     /// </summary>
@@ -44,7 +44,7 @@ public class HealthBarUI : MonoBehaviour
     /// 显示时间
     /// </summary>
     [SerializeField]
-    private float visibleTime;
+    [Tooltip("显示时间")] private float visibleTime;
 
     void Awake()
     {

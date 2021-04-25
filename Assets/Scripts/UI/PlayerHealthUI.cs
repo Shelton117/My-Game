@@ -6,15 +6,15 @@ using UnityEngine.UI;
 public class PlayerHealthUI : MonoBehaviour
 {
     /// <summary>
-    /// 
+    /// 等级文本
     /// </summary>
     private Text levelText;
     /// <summary>
-    /// 
+    /// 生命条
     /// </summary>
     private Image healthSlider;
     /// <summary>
-    /// 
+    /// 经验条
     /// </summary>
     private Image expSlider;
 
@@ -31,13 +31,19 @@ public class PlayerHealthUI : MonoBehaviour
         UpdateExp();
     }
 
+    /// <summary>
+    /// 刷新生命值
+    /// </summary>
     private void UpdateHealth()
     {
         float healthSliderPercent = (float) GameManager.Instance.PlayerStats.CurrentHealth /
-                              GameManager.Instance.PlayerStats.MaxHealth;
+                                    GameManager.Instance.PlayerStats.MaxHealth;
         healthSlider.fillAmount = healthSliderPercent;
     }
 
+    /// <summary>
+    /// 刷新经验
+    /// </summary>
     private void UpdateExp()
     {
         float expSliderPercent = (float)GameManager.Instance.PlayerStats.CurrentExp /

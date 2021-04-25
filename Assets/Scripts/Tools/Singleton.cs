@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -15,6 +13,9 @@ public class Singleton<T> : MonoBehaviour where T: Singleton<T>
         get { return instance; }
     }
 
+    /// <summary>
+    /// 是否生成单例
+    /// </summary>
     public static bool F_isInitialized
     {
         get { return instance != null; }

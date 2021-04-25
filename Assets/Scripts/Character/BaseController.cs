@@ -48,7 +48,7 @@ public class BaseController : MonoBehaviour
     /// 敌人的状态
     /// </summary>
     [SerializeField]
-    private EnemyStates enemyStates;
+    [Tooltip("敌人的状态")] private EnemyStates enemyStates;
     /// <summary>
     /// AI 代理
     /// </summary>
@@ -67,20 +67,20 @@ public class BaseController : MonoBehaviour
     protected CharacterStats characterStats;
 
     /// <summary>
-    /// 怪物视觉范围
+    /// 视觉范围
     /// </summary>
     [Header("Basic Settings")]
     [SerializeField]
-    private float sightRadius;
+    [Tooltip("视觉范围")] private float sightRadius;
     /// <summary>
     /// 敌人移动的速度
     /// </summary>
     private float speed;
     /// <summary>
-    /// 敌人的状态
+    /// 状态
     /// </summary>
     [SerializeField]
-    private bool isGruard;
+    [Tooltip("状态（是否站桩）")] private bool isGruard;
     /// <summary>
     /// 攻击目标
     /// </summary>
@@ -89,7 +89,7 @@ public class BaseController : MonoBehaviour
     /// 侦查时间
     /// </summary>
     [SerializeField]
-    private float lookAtTime;
+    [Tooltip("侦查时间")] private float lookAtTime;
     /// <summary>
     /// 保持侦查时间
     /// </summary>
@@ -103,7 +103,7 @@ public class BaseController : MonoBehaviour
     /// 巡逻范围
     /// </summary>
     [Header("Patrol Settings")]
-    [SerializeField] private float patrolRange;
+    [Tooltip("巡逻范围")] [SerializeField] private float patrolRange;
     /// <summary>
     /// 巡逻点
     /// </summary>
@@ -120,7 +120,7 @@ public class BaseController : MonoBehaviour
     /// 友军或者怪物
     /// </summary>
     [SerializeField]
-    private EnemyOrFriendlyForces enemyOrFriendlyForces;
+    [Tooltip("友军或者怪物")] private EnemyOrFriendlyForces enemyOrFriendlyForces;
 
     [Header(" ")]
     //控制动画状态

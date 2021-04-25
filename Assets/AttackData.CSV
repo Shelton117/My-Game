@@ -1,0 +1,9 @@
+number,name,attackRange,skillRange,coolDown,minDamage,maxDamage,criticalMultiplier,criticalChance
+int,string,float,float,float,int,int,float,float
+1,Footman,3,0,1,5,7,3,0.2
+2,Golem,3.5,10,5,6,10,2,0.25
+3,Grunt,2.3,1.6,2,5,7,2,0.2
+4,Lich,1.5,3,5,2,6,1.5,0.1
+5,Player,2,0,0.7,4,6,2,0.3
+6,Slime,1,0,1,2,4,2,0.2
+7,TurtleShell,1.5,0,1.5,3,6,2.5,0.2

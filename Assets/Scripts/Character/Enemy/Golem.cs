@@ -1,8 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+/// <summary>
+/// 石头人脚本
+/// </summary>
 public class Golem : EnemyController
 {
     /// <summary>
