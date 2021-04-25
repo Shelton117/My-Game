@@ -47,13 +47,23 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        //注册玩家事件
-        MouseManager.Instance.OnMouseClicked += MoveToTarget;
-        MouseManager.Instance.OnEnemyClicked += EventAttack;
-
         //注册为被观察者
         //游戏中可直接根据GameManager获取玩家信息
         GameManager.Instance.RigisterPlayer(characterStats);
+    }
+
+    void OnEnable()
+    {
+        //注册玩家事件
+        MouseManager.Instance.OnMouseClicked += MoveToTarget;
+        MouseManager.Instance.OnEnemyClicked += EventAttack;
+    }
+
+    void OnDisable()
+    {
+        //注销玩家事件
+        MouseManager.Instance.OnMouseClicked -= MoveToTarget;
+        MouseManager.Instance.OnEnemyClicked -= EventAttack;
     }
 
     void Update()

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum TransitionType
@@ -27,6 +25,14 @@ public class TransitionPoint : MonoBehaviour
     /// 是否可以传送
     /// </summary>
     public bool canTrans;
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && canTrans)
+        {
+            SceneController.Instance.TransitionToDestination(this);
+        }
+    }
 
     void OnTriggerStay(Collider other)
     {

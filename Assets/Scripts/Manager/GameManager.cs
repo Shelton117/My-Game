@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 /// <summary>
 /// 游戏管理类
@@ -8,9 +9,25 @@ using UnityEngine;
 /// </summary>
 public class GameManager : Singleton<GameManager>
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [HideInInspector]
     public CharacterStats PlayerStats;
+    /// <summary>
+    /// 
+    /// </summary>
+    private CinemachineFreeLook followCamera;
+    /// <summary>
+    /// 
+    /// </summary>
     List<IEndGameObserver> endGameObservers = new List<IEndGameObserver>();
+
+    protected override void Awake()
+    {
+        base.Awake();
+        DontDestroyOnLoad(this);
+    }
 
     /// <summary>
     /// 注册玩家（信息）
@@ -19,6 +36,13 @@ public class GameManager : Singleton<GameManager>
     public void RigisterPlayer(CharacterStats Player)
     {
         PlayerStats = Player;
+
+        followCamera = FindObjectOfType<CinemachineFreeLook>();
+        if (followCamera != null)
+        {
+            followCamera.Follow = PlayerStats.transform.GetChild(2);
+            followCamera.LookAt = PlayerStats.transform.GetChild(2);
+        }
     }
 
     /// <summary>
