@@ -1,11 +1,17 @@
 using UnityEngine;
 
+/// <summary>
+/// 传送类型
+/// </summary>
 public enum TransitionType
 {
     SameScene,
     DifferentScene
 }
 
+/// <summary>
+/// 传送点
+/// </summary>
 public class TransitionPoint : MonoBehaviour
 {
     [Header("Transition Imfo")]

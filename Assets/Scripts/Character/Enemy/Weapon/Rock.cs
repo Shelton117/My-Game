@@ -10,6 +10,9 @@ public enum RockStates
     HitNothing
 }
 
+/// <summary>
+/// 石头组件
+/// </summary>
 public class Rock : MonoBehaviour
 {
     /// <summary>
@@ -91,6 +94,8 @@ public class Rock : MonoBehaviour
         }
     }
 
+    #region 共有方法接口
+
     /// <summary>
     /// 飞向攻击目标
     /// </summary>
@@ -103,4 +108,6 @@ public class Rock : MonoBehaviour
         direction = (target.transform.position - transform.position + Vector3.up).normalized;
         rb.AddForce(direction * force, ForceMode.Impulse);
     }
+
+    #endregion
 }

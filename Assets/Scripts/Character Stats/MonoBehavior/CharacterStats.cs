@@ -1,6 +1,9 @@
 using System;
 using UnityEngine;
 
+/// <summary>
+/// 获取属性的组件
+/// </summary>
 public class CharacterStats : MonoBehaviour
 {
     /// <summary>

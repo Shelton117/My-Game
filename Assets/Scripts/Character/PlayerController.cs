@@ -1,9 +1,10 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+/// <summary>
+/// Íæ¼Ò¿ØÖÆÀà
+/// </summary>
 public class PlayerController : MonoBehaviour
 {
     /// <summary>

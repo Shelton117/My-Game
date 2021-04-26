@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
@@ -10,16 +9,16 @@ using Cinemachine;
 public class GameManager : Singleton<GameManager>
 {
     /// <summary>
-    /// 
+    /// 玩家属性
     /// </summary>
     [HideInInspector]
     public CharacterStats PlayerStats;
     /// <summary>
-    /// 
+    /// 跟随相机
     /// </summary>
     private CinemachineFreeLook followCamera;
     /// <summary>
-    /// 
+    /// 被观察者
     /// </summary>
     List<IEndGameObserver> endGameObservers = new List<IEndGameObserver>();
 
@@ -28,6 +27,8 @@ public class GameManager : Singleton<GameManager>
         base.Awake();
         DontDestroyOnLoad(this);
     }
+
+    #region 共有方法接口
 
     /// <summary>
     /// 注册玩家（信息）
@@ -79,4 +80,6 @@ public class GameManager : Singleton<GameManager>
             observer.EndNotify();
         }
     }
+
+    #endregion
 }

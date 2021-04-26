@@ -1,8 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 其他血条栏
+/// </summary>
 public class HealthBarUI : MonoBehaviour
 {
     /// <summary>
@@ -88,6 +89,8 @@ public class HealthBarUI : MonoBehaviour
         }
     }
 
+    #region 私有方法
+
     private void UpdateHealthBar(int current, int max)
     {
         if (current <= 0) Destroy(UIbar.gameObject);
@@ -98,4 +101,6 @@ public class HealthBarUI : MonoBehaviour
         float sliderPercent = (float)current / max;
         heathSlider.fillAmount = sliderPercent;
     }
+
+    #endregion
 }

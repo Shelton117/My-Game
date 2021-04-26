@@ -3,18 +3,22 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// 加载管理类
+/// demo
+/// </summary>
 public class LoadManager : Singleton<LoadManager>
 {
     /// <summary>
-    /// 
+    /// loading图
     /// </summary>
     public GameObject loadScreen;
     /// <summary>
-    /// 
+    /// 进度条
     /// </summary>
     public Slider slider;
     /// <summary>
-    /// 
+    /// 进度
     /// </summary>
     public Text text;
 
@@ -24,11 +28,20 @@ public class LoadManager : Singleton<LoadManager>
         DontDestroyOnLoad(this);
     }
 
+    /// <summary>
+    /// 跳转到下一个场景
+    /// </summary>
+    /// <param name="sceneName">跳转场景名</param>
     public void LoadNextLevel(string sceneName)
     {
         StartCoroutine(LoadLevel(sceneName));
     }
 
+    /// <summary>
+    /// 通过协程的方式异步加载场景
+    /// </summary>
+    /// <param name="sceneName"></param>
+    /// <returns></returns>
     IEnumerator LoadLevel(string sceneName)
     {
         //yield return null;
@@ -57,10 +70,15 @@ public class LoadManager : Singleton<LoadManager>
 
         //    yield return null;
         //}
+
+        //显示loading图
         loadScreen.SetActive(true);
 
+        //异步加载场景
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName);
         asyncOperation.allowSceneActivation = false;
+
+        //更新loading状态
         while (!asyncOperation.isDone)
         {
             slider.value = asyncOperation.progress;

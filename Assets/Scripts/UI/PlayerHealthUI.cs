@@ -1,8 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; 
+using UnityEngine.UI;
 
+/// <summary>
+/// 生命值&经验值UI组件
+/// </summary>
 public class PlayerHealthUI : MonoBehaviour
 {
     /// <summary>
@@ -31,6 +32,8 @@ public class PlayerHealthUI : MonoBehaviour
         UpdateExp();
     }
 
+    #region 私有方法
+
     /// <summary>
     /// 刷新生命值
     /// </summary>
@@ -52,4 +55,6 @@ public class PlayerHealthUI : MonoBehaviour
 
         levelText.text = "LEVEL." + GameManager.Instance.PlayerStats.CurrentLevel.ToString("00");
     }
+
+    #endregion
 }

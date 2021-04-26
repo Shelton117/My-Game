@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Õÿ’π¿‡
+/// </summary>
 public static class ExtensionMethod
 {
     private const float dotThreshold = 0.5f;
