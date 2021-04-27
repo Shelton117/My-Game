@@ -100,4 +100,28 @@ public class SceneController : Singleton<SceneController>
 
         return null;
     }
+
+    public void TransitionToFirshLevel()
+    {
+        StartCoroutine(LoadLevel("Level0"));
+    }
+
+    public void TransitionToLoadGame()
+    {
+        StartCoroutine(LoadLevel(SaveManager.Instance.SceneName));
+    }
+
+    IEnumerator LoadLevel(string scene)
+    {
+        if (scene != "")
+        {
+            yield return SceneManager.LoadSceneAsync(scene);
+            yield return player = Instantiate(playerPrefab, GameManager.Instance.GetEntrance().position,
+                GameManager.Instance.GetEntrance().rotation);
+
+            //±£¥Ê”Œœ∑
+            SaveManager.Instance.SavePlayerData();
+            yield break;
+        }
+    }
 }

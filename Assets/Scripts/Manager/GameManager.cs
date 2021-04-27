@@ -81,5 +81,22 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    /// <summary>
+    /// 获取enter标签点
+    /// </summary>
+    /// <returns></returns>
+    public Transform GetEntrance()
+    {
+        foreach (var item in FindObjectsOfType<TransitionDestination>())
+        {
+            if (item.destinationTag == DestinationTag.Enter)
+            {
+                return item.transform;
+            }
+        }
+
+        return null;
+    }
+
     #endregion
 }

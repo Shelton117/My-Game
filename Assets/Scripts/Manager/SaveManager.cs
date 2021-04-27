@@ -1,10 +1,17 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// 保存/加载数据的管理类
 /// </summary>
 public class SaveManager : Singleton<SaveManager>
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    private string sceneName = "";
+    public string SceneName { get { return PlayerPrefs.GetString(sceneName); } }
+
     protected override void Awake()
     {
         base.Awake();
@@ -50,6 +57,7 @@ public class SaveManager : Singleton<SaveManager>
     {
         var jsonData = JsonUtility.ToJson(data);
         PlayerPrefs.SetString(key, jsonData);
+        PlayerPrefs.SetString(sceneName, SceneManager.GetActiveScene().name);
         PlayerPrefs.Save();
     }
 
