@@ -389,6 +389,7 @@ GameObject:
   - component: {fileID: 5330974757161930946}
   - component: {fileID: 4400412825120804414}
   - component: {fileID: 2178070144261674907}
+  - component: {fileID: 868415704858710943}
   m_Layer: 0
   m_Name: Footman
   m_TagString: Player
@@ -505,6 +506,19 @@ MonoBehaviour:
   barPoint: {fileID: 1720352090572628583}
   isShowUpBar: 0
   visibleTime: 3
+--- !u!65 &868415704858710943
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4637278971670192081}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.9253793, z: 1}
+  m_Center: {x: 0, y: 0.94956374, z: 0}
 --- !u!1 &4637278971762314316
 GameObject:
   m_ObjectHideFlags: 0

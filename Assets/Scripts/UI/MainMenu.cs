@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
@@ -15,6 +16,10 @@ public class MainMenu : MonoBehaviour
     /// 
     /// </summary>
     private Button quitBtn;
+    /// <summary>
+    /// 
+    /// </summary>
+    private PlayableDirector playableDirector;
 
     void Awake()
     {
@@ -22,12 +27,22 @@ public class MainMenu : MonoBehaviour
         continueBtn = transform.GetChild(2).GetComponent<Button>();
         quitBtn = transform.GetChild(3).GetComponent<Button>();
 
-        newGameBtn.onClick.AddListener(newGame);
+        newGameBtn.onClick.AddListener(PlayTimeline);
         continueBtn.onClick.AddListener(continueGame);
         quitBtn.onClick.AddListener(quitGame);
+
+        playableDirector = FindObjectOfType<PlayableDirector>();
+        playableDirector.stopped += newGame;
     }
 
-    void newGame()
+    #region 按钮事件
+
+    private void PlayTimeline()
+    {
+        playableDirector.Play();
+    }
+
+    void newGame(PlayableDirector playableDirector)
     {
         //清楚数据
         PlayerPrefs.DeleteAll();
@@ -44,6 +59,11 @@ public class MainMenu : MonoBehaviour
     void quitGame()
     {
         Application.Quit();
+
+#if UNITY_EDITOR
         Debug.Log("退出游戏");
+#endif
     }
+
+    #endregion
 }

@@ -1,10 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.AI;
-
 /// <summary>
-/// 预添加组件
+/// 敌人控制器
 /// </summary>
 public class EnemyController : BaseController, IEndGameObserver
 {
