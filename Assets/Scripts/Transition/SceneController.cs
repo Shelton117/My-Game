@@ -14,11 +14,11 @@ public class SceneController : Singleton<SceneController>, IEndGameObserver
     /// </summary>
     public GameObject playerPrefab;
     /// <summary>
-    /// 
+    /// 转场效果的预制体
     /// </summary>
     public SceneFader sceneFaderPrefab;
     /// <summary>
-    /// 
+    /// 是否转过场了
     /// </summary>
     private bool faderFinished;
     /// <summary>
@@ -48,6 +48,8 @@ public class SceneController : Singleton<SceneController>, IEndGameObserver
         GameManager.Instance.RemoveObserver(this);
     }
 
+    #region 公有函数接口
+
     /// <summary>
     /// 传送到目标位置
     /// </summary>
@@ -64,6 +66,27 @@ public class SceneController : Singleton<SceneController>, IEndGameObserver
                 break;
         }
     }
+    
+    /// <summary>
+    /// 开始第一关
+    /// </summary>
+    public void TransitionToFirshLevel()
+    {
+        StartCoroutine(LoadLevel("Level0"));
+    }
+    
+    /// <summary>
+    /// 继续游戏
+    /// 加载先前的数据
+    /// </summary>
+    public void TransitionToLoadGame()
+    {
+        StartCoroutine(LoadLevel(SaveManager.Instance.SceneName));
+    }
+
+    #endregion
+
+    #region 跳转场景的协程
 
     /// <summary>
     /// 协程异步加载新场景
@@ -103,42 +126,7 @@ public class SceneController : Singleton<SceneController>, IEndGameObserver
     }
 
     /// <summary>
-    /// 获取目标点信息
-    /// </summary>
-    /// <param name="destinationTag"></param>
-    /// <returns></returns>
-    private TransitionDestination GetDestination(DestinationTag destinationTag)
-    {
-        var entrances = FindObjectsOfType<TransitionDestination>();
-        foreach (var VARIABLE in entrances)
-        {
-            if (VARIABLE.destinationTag == destinationTag)
-            {
-                return VARIABLE;
-            }
-        }
-
-        return null;
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    public void TransitionToFirshLevel()
-    {
-        StartCoroutine(LoadLevel("Level0"));
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    public void TransitionToLoadGame()
-    {
-        StartCoroutine(LoadLevel(SaveManager.Instance.SceneName));
-    }
-
-    /// <summary>
-    /// 
+    /// 加载场景
     /// </summary>
     /// <param name="scene"></param>
     /// <returns></returns>
@@ -161,7 +149,8 @@ public class SceneController : Singleton<SceneController>, IEndGameObserver
     }
 
     /// <summary>
-    /// 
+    /// 加载开始场景
+    /// 回到开始场景
     /// </summary>
     /// <returns></returns>
     IEnumerator LoadStart()
@@ -173,6 +162,36 @@ public class SceneController : Singleton<SceneController>, IEndGameObserver
         yield break;
     }
 
+    #endregion
+
+    #region 私有方法
+
+    /// <summary>
+    /// 获取目标点信息
+    /// </summary>
+    /// <param name="destinationTag"></param>
+    /// <returns></returns>
+    private TransitionDestination GetDestination(DestinationTag destinationTag)
+    {
+        var entrances = FindObjectsOfType<TransitionDestination>();
+        foreach (var VARIABLE in entrances)
+        {
+            if (VARIABLE.destinationTag == destinationTag)
+            {
+                return VARIABLE;
+            }
+        }
+
+        return null;
+    }
+
+    #endregion
+
+    #region 实现接口
+
+    /// <summary>
+    /// 实现观察者事件
+    /// </summary>
     public void EndNotify()
     {
         if (faderFinished)
@@ -181,4 +200,6 @@ public class SceneController : Singleton<SceneController>, IEndGameObserver
         }
         StartCoroutine(LoadStart());
     }
+
+    #endregion
 }

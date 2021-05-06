@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class SaveManager : Singleton<SaveManager>
 {
     /// <summary>
-    /// 
+    /// ³¡¾°Ãû³Æ
     /// </summary>
     private string sceneName = "";
     public string SceneName { get { return PlayerPrefs.GetString(sceneName); } }
@@ -70,6 +70,4 @@ public class SaveManager : Singleton<SaveManager>
     }
 
     #endregion
-
-
 }

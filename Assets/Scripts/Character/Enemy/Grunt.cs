@@ -11,6 +11,8 @@ public class Grunt : EnemyController
     /// </summary>
     [Header("Skill")] public float kickForce = 10f;
 
+    #region Animation Event
+
     /// <summary>
     /// 技能效果
     /// 击退并使其眩晕
@@ -29,4 +31,6 @@ public class Grunt : EnemyController
             attackTarget.GetComponent<Animator>().SetTrigger("Dizzy");
         }
     }
+
+    #endregion
 }

@@ -178,6 +178,8 @@ public class BaseController : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, patrolRange);
     }
+    
+    #region 私有方法
 
     /// <summary>
     /// 刷新动画
@@ -191,8 +193,6 @@ public class BaseController : MonoBehaviour
 
         //anim.SetFloat("Speed", agent.velocity.sqrMagnitude);
     }
-
-    #region 私有方法
 
     /// <summary>
     /// 刷新状态

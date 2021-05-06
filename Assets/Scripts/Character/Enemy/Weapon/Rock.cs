@@ -1,8 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+/// <summary>
+/// 石头的状态
+/// </summary>
 public enum RockStates
 {
     HitPlayer,
@@ -64,6 +65,10 @@ public class Rock : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// 检测到碰撞
+    /// </summary>
+    /// <param name="other"></param>
     void OnCollisionEnter(Collision other)
     {
         switch (rockStates)

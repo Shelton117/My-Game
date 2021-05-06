@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// <summary>
-/// 拓展类
+/// 拓展类 Transform
 /// </summary>
 public static class ExtensionMethod
 {

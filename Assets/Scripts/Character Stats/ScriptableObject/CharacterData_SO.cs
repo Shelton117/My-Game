@@ -22,10 +22,15 @@ public class CharacterData_SO : ScriptableObject
     [Tooltip("当前经验值")] public int currentExp;
     [Tooltip("升级提升")] public float LevelBuff;
     
+    /// <summary>
+    /// 升级
+    /// </summary>
     private float LevelMultiplier
     {
         get { return 1 + (currentLevel - 1) * LevelBuff; }
     }
+
+    #region 公有接口方法（处理属性）
 
     /// <summary>
     /// 升级的逻辑
@@ -40,6 +45,9 @@ public class CharacterData_SO : ScriptableObject
             LevelUp();
         }
     }
+    #endregion
+
+    #region 私有函数
 
     /// <summary>
     /// 处理升级后数据的变化
@@ -53,6 +61,8 @@ public class CharacterData_SO : ScriptableObject
         //生命值处理
         maxHealth += (int)(maxHealth * LevelBuff);
         currentHealth = maxHealth;
-        //其他属性...
+        //TODO：其他属性...
     }
+
+    #endregion
 }

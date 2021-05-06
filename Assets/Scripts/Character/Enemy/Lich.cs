@@ -19,6 +19,8 @@ public class Lich : EnemyController
     /// </summary>
     public Transform handPos;
 
+    #region Animation Event
+
     /// <summary>
     /// 技能效果
     /// 击退并使其眩晕
@@ -52,4 +54,6 @@ public class Lich : EnemyController
             FireballObject.GetComponent<Fireball>().target = attackTarget;
         }
     }
+
+    #endregion
 }

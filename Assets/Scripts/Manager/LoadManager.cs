@@ -28,6 +28,8 @@ public class LoadManager : Singleton<LoadManager>
         DontDestroyOnLoad(this);
     }
 
+    #region 公有函数接口
+
     /// <summary>
     /// 跳转到下一个场景
     /// </summary>
@@ -37,13 +39,18 @@ public class LoadManager : Singleton<LoadManager>
         StartCoroutine(LoadLevel(sceneName));
     }
 
+    #endregion
+    
+
     /// <summary>
     /// 通过协程的方式异步加载场景
     /// </summary>
-    /// <param name="sceneName"></param>
+    /// <param name="sceneName">场景名</param>
     /// <returns></returns>
     IEnumerator LoadLevel(string sceneName)
     {
+        #region 官方示例
+
         //yield return null;
 
         ////Begin to load the Scene you specify
@@ -71,6 +78,8 @@ public class LoadManager : Singleton<LoadManager>
         //    yield return null;
         //}
 
+        #endregion
+        
         //显示loading图
         loadScreen.SetActive(true);
 

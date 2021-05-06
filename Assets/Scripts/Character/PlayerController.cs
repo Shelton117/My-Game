@@ -150,7 +150,7 @@ public class PlayerController : MonoBehaviour
 
         transform.LookAt(attackTarget.transform);
 
-        //TODO:修改攻击范围
+        //设置攻击范围
         while (Vector3.Distance(attackTarget.transform.position, transform.position) > characterStats.attackData.attackRange)
         {
             //移动到攻击目标所在的位置
