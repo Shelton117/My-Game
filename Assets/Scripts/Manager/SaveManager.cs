@@ -53,6 +53,11 @@ public class SaveManager : Singleton<SaveManager>
 
     #region 私有方法
 
+    /// <summary>
+    /// 保存
+    /// </summary>
+    /// <param name="data"></param>
+    /// <param name="key"></param>
     private void Save(Object data, string key)
     {
         var jsonData = JsonUtility.ToJson(data);
@@ -61,6 +66,11 @@ public class SaveManager : Singleton<SaveManager>
         PlayerPrefs.Save();
     }
 
+    /// <summary>
+    /// 读取
+    /// </summary>
+    /// <param name="data"></param>
+    /// <param name="key"></param>
     private void Load(Object data, string key)
     {
         if (PlayerPrefs.HasKey(key))
