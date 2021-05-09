@@ -29,5 +29,5 @@ VS 2017
 #### 其他
 
 1. [demo教程](https://learn.u3d.cn/u/m-studio-1/?tab=created)
-2.  [文档.md](Assets\Doc\文档.md) 
+2.  [文档.md](https://github.com/Shelton117/My-Game/blob/main/Assets/Doc/文档.md) 
 
