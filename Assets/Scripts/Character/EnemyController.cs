@@ -1,37 +1,43 @@
-/// <summary>
-/// 敌人控制器
-/// </summary>
-public class EnemyController : BaseController, IEndGameObserver
+using Assets.Scripts.Manager;
+using Assets.Scripts.Tools;
+
+namespace Assets.Scripts.Character
 {
-    protected override void Start()
+    /// <summary>
+    /// 敌人控制器
+    /// </summary>
+    public class EnemyController : BaseController, IEndGameObserver
     {
-        base.Start();
-        GameManager.Instance.AddObserver(this);
+        protected override void Start()
+        {
+            base.Start();
+            //GameManager.Instance.AddObserver(this);
+        }
+
+        void OnEnable()
+        {
+            GameManager.Instance.AddObserver(this);
+        }
+
+        void OnDisable()
+        {
+            if (!GameManager.F_isInitialized) return;
+            GameManager.Instance.RemoveObserver(this);
+        }
+
+        #region 实现接口
+
+        public void EndNotify()
+        {
+            //玩家阵亡后的表现
+            isChase = false;
+            isWalk = false;
+            isPlayerDead = true;
+            attackTarget = null;
+
+            anim.SetBool("Win", true);
+        }
+
+        #endregion
     }
-
-    //void OnEnable()
-    //{
-    //    GameManager.Instance.AddObserver(this);
-    //}
-
-    void OnDisable()
-    {
-        if (!GameManager.F_isInitialized) return;
-        GameManager.Instance.RemoveObserver(this);
-    }
-
-    #region 实现接口
-
-    public void EndNotify()
-    {
-        //玩家阵亡后的表现
-        isChase = false;
-        isWalk = false;
-        isPlayerDead = true;
-        attackTarget = null;
-
-        anim.SetBool("Win", true);
-    }
-
-    #endregion
 }

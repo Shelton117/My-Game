@@ -1,20 +1,23 @@
 using UnityEngine;
 
-/// <summary>
-/// 目的地标签
-/// </summary>
-public enum DestinationTag
+namespace Assets.Scripts.Transition
 {
-    Enter,
-    A,
-    B,
-    C
-}
+    /// <summary>
+    /// 目的地标签
+    /// </summary>
+    public enum DestinationTag
+    {
+        Enter,
+        A,
+        B,
+        C
+    }
 
-/// <summary>
-/// 传送目的地
-/// </summary>
-public class TransitionDestination : MonoBehaviour
-{
-    public DestinationTag destinationTag;
+    /// <summary>
+    /// 传送目的地
+    /// </summary>
+    public class TransitionDestination : MonoBehaviour
+    {
+        public DestinationTag destinationTag;
+    }
 }

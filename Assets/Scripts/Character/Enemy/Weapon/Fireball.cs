@@ -1,65 +1,67 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Fireball : MonoBehaviour
+namespace Assets.Scripts.Character.Enemy.Weapon
 {
-    /// <summary>
-    /// 自身刚体
-    /// </summary>
-    private Rigidbody rb;
-    /// <summary>
-    /// 火球造成的伤害
-    /// </summary>
-    public int damage;
-    /// <summary>
-    /// 给火球施加的力
-    /// </summary>
-    [Header("Basic Settings")] public float force;
-    /// <summary>
-    /// 攻击目标
-    /// </summary>
-    [HideInInspector] public GameObject target;
-    /// <summary>
-    /// 方向
-    /// </summary>
-    private Vector3 direction;
-
-    void Awake()
+    public class Fireball : MonoBehaviour
     {
-        rb = GetComponent<Rigidbody>();
-    }
+        /// <summary>
+        /// 自身刚体
+        /// </summary>
+        private Rigidbody rb;
+        /// <summary>
+        /// 火球造成的伤害
+        /// </summary>
+        public int damage;
+        /// <summary>
+        /// 给火球施加的力
+        /// </summary>
+        [Header("Basic Settings")] public float force;
+        /// <summary>
+        /// 攻击目标
+        /// </summary>
+        [HideInInspector] public GameObject target;
+        /// <summary>
+        /// 方向
+        /// </summary>
+        private Vector3 direction;
 
-    void Start()
-    {
-        FlyToTarget();
-    }
-
-    void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.CompareTag("Player"))
+        void Awake()
         {
-            other.gameObject.GetComponent<NavMeshAgent>().isStopped = true;
-            other.gameObject.GetComponent<NavMeshAgent>().velocity = direction * force;
-            //other.gameObject.GetComponent<Animator>().SetTrigger("Dizzy");
-            other.gameObject.GetComponent<CharacterStats>().TakeDamage(damage, other.gameObject.GetComponent<CharacterStats>());
-            //Instantiate(breakEffect, transform.position, Quaternion.identity);
+            rb = GetComponent<Rigidbody>();
         }
 
-        Destroy(gameObject);
-    }
-
-    /// <summary>
-    /// 飞向攻击目标
-    /// </summary>
-    public void FlyToTarget()
-    {
-        if (target == null)
+        void Start()
         {
-            target = FindObjectOfType<PlayerController>().gameObject;
+            FlyToTarget();
         }
-        direction = (target.transform.position - transform.position + Vector3.up).normalized;
-        rb.AddForce(direction * force, ForceMode.Impulse);
+
+        void OnCollisionEnter(Collision other)
+        {
+            if (other.gameObject.CompareTag("Player"))
+            {
+                other.gameObject.GetComponent<NavMeshAgent>().isStopped = true;
+                other.gameObject.GetComponent<NavMeshAgent>().velocity = direction * force;
+                //other.gameObject.GetComponent<Animator>().SetTrigger("Dizzy");
+                other.gameObject.GetComponent<CharacterStats.MonoBehavior.CharacterStats>().TakeDamage(damage,
+                    other.gameObject.GetComponent<CharacterStats.MonoBehavior.CharacterStats>());
+                //Instantiate(breakEffect, transform.position, Quaternion.identity);
+            }
+
+            Destroy(gameObject);
+        }
+
+        /// <summary>
+        /// 飞向攻击目标
+        /// </summary>
+        public void FlyToTarget()
+        {
+            if (target == null)
+            {
+                target = FindObjectOfType<PlayerController>().gameObject;
+            }
+            direction = (target.transform.position - transform.position + Vector3.up).normalized;
+            rb.AddForce(direction * force, ForceMode.Impulse);
+        }
     }
 }

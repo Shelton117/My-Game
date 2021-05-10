@@ -1,69 +1,73 @@
+using Assets.Scripts.Transition;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.UI;
 
-public class MainMenu : MonoBehaviour
+namespace Assets.Scripts.UI
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    private Button newGameBtn;
-    /// <summary>
-    /// 
-    /// </summary>
-    private Button continueBtn;
-    /// <summary>
-    /// 
-    /// </summary>
-    private Button quitBtn;
-    /// <summary>
-    /// 
-    /// </summary>
-    private PlayableDirector playableDirector;
-
-    void Awake()
+    public class MainMenu : MonoBehaviour
     {
-        newGameBtn = transform.GetChild(1).GetComponent<Button>();
-        continueBtn = transform.GetChild(2).GetComponent<Button>();
-        quitBtn = transform.GetChild(3).GetComponent<Button>();
+        /// <summary>
+        /// 
+        /// </summary>
+        private Button newGameBtn;
+        /// <summary>
+        /// 
+        /// </summary>
+        private Button continueBtn;
+        /// <summary>
+        /// 
+        /// </summary>
+        private Button quitBtn;
+        /// <summary>
+        /// 
+        /// </summary>
+        private PlayableDirector playableDirector;
 
-        newGameBtn.onClick.AddListener(PlayTimeline);
-        continueBtn.onClick.AddListener(continueGame);
-        quitBtn.onClick.AddListener(quitGame);
+        void Awake()
+        {
+            newGameBtn = transform.GetChild(1).GetComponent<Button>();
+            continueBtn = transform.GetChild(2).GetComponent<Button>();
+            quitBtn = transform.GetChild(3).GetComponent<Button>();
 
-        playableDirector = FindObjectOfType<PlayableDirector>();
-        playableDirector.stopped += newGame;
-    }
+            newGameBtn.onClick.AddListener(PlayTimeline);
+            continueBtn.onClick.AddListener(continueGame);
+            quitBtn.onClick.AddListener(quitGame);
 
-    #region 按钮事件
+            playableDirector = FindObjectOfType<PlayableDirector>();
+            playableDirector.stopped += newGame;
+        }
 
-    private void PlayTimeline()
-    {
-        playableDirector.Play();
-    }
+        #region 按钮事件
 
-    void newGame(PlayableDirector playableDirector)
-    {
-        //清楚数据
-        PlayerPrefs.DeleteAll();
-        //转换场景
-        SceneController.Instance.TransitionToFirshLevel();
-    }
+        private void PlayTimeline()
+        {
+            playableDirector.Play();
+        }
 
-    void continueGame()
-    {
-        //转换场景
-        SceneController.Instance.TransitionToLoadGame();
-    }
+        void newGame(PlayableDirector playableDirector)
+        {
+            //清楚数据
+            PlayerPrefs.DeleteAll();
+            //转换场景
+            SceneController.Instance.TransitionToFirshLevel();
+        }
 
-    void quitGame()
-    {
-        Application.Quit();
+        void continueGame()
+        {
+            //转换场景
+            SceneController.Instance.TransitionToLoadGame();
+        }
+
+        void quitGame()
+        {
+            Application.Quit();
 
 #if UNITY_EDITOR
-        Debug.Log("退出游戏");
+            Debug.Log("退出游戏");
 #endif
-    }
+        }
 
-    #endregion
+        #endregion
+    }
 }
